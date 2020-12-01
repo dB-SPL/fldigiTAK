@@ -1,5 +1,5 @@
 # fldigiTAK
-A Python script to send and receive Cursor-on-Target (CoT) messages using Fldigi as a TNC
+**A Python script to send and receive Cursor-on-Target (CoT) messages using Fldigi as a TNC**
 
 This is still very much a work in progress, and it may never be completely practical.
 
