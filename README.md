@@ -5,6 +5,8 @@ This is still very much a work in progress, and it may never be completely pract
 
 To support more than just a couple users, you should use a high-throughput mode like 8PSK1000 (3kbps) or 8PSK1200F (2.4kbps with forward error correction).  These modes should work over VHF/UHF radios without a "9600 baud" port using a simple sound card audio interface.  While it's possible to use use VOX with Fldigi's standard "long-preamble" setting for PSK modes, much better throughput is achieved using the "short-pramble", however this usually requires PTT control of the radio.
 
+Follow your local regulations.  As I interpret current US FCC rules, this should comply with Part 95 rules when used with a type-accepted MURS radio or Part 97 rules when used on amatuer radio frequencies with proper station ID.  It seems to me, the transmissions would be too long and too frequent to comply with Part 95 rules for FRS radios.
+
 ## Requirements
 Requires TAK clients (tested with ATAK and WinTAK) be configured to send XML CoT messages to the computer running the script on the UDP port specified in `send.py`.
 
@@ -13,6 +15,8 @@ Requires Fldigi be installed, properly configured, and running prior to launchin
 My takprotobuf library and the Untangle module for parsing XML are required in addition to the pyfldigi module for controlling Fldigi.
 
 ## Usage
+First, edit `send.py` for the UDP port and network interface you want to listen on.  The default is to listen on UDP port 6666 on all network interfaces.  If you're required to identify your transmissions in an unencoded form, enter your callsign as well.
+
 Launch Fldigi, then run `send.py` to send traffic from the clients over the radio.
 
 The `recv()` function in `recv.py` will return a list containing any CoT traffic Fldigi has received.  The messages are encoded as TAK protobufs, and can be sent directly to a client via UDP or broadcast to all clients on UDP port 4242.
