@@ -9,6 +9,17 @@ from takprotobuf import parseProto
 
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
+# If you'll be transmitting on amateur radio frequencies, or if you need to identify your transmissions with an unencoded callsign, enter it here,
+# and it will be appended to all transmissions you send.  Sending an unencoded callsign makes the transmission longer, so if your station isn't required
+# to identify every transmission, leave this blank. In the US, business licensees are only required to have a single to station ID once an hour and MURS
+# users aren't required to identify trasmissions at all.
+# Keep in mind, data received from other users may be considered "third party messages" by your local regulators.  Makes sure you follow all local guidelines.
+callsign = ""
+
+# If you entered a callsign above, we'll format it here for inclusion in your messages.
+if callsign != "":
+    callsign = " de " + callsign
+
 m = pyfldigi.Client()
 
 loop = asyncio.get_event_loop()
@@ -53,7 +64,7 @@ def recvfrom(loop, sock, n_bytes, fut=None, registed=False):
             length = hex(len(b64))[2:]
 			
         print("Base64 = " + b64)
-        send = "::" + length + ":" + b64 + ":^r"
+        send = "::" + length + ":" + b64 + ":" + callsign + "^r"
 		
         # Print received data
         print('Received {}'.format(xml))
