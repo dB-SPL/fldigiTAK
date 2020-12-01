@@ -10,6 +10,9 @@ Requires Fldigi be installed, properly configured, and running prior to launchin
 
 My takprotobuf library as well as the Untangle module for parsing XML are also required in addition to the pyfldigi module for controlling Fldigi.
 
+## Usage
+Launch Fldigi, then run `send.py` to send traffic from the clients over the radio.  The `recv()` function in `recv.py` will return a list containing any CoT traffic Fldigi has received.  The messages are encoded as TAK protobufs, and can be sent directly to a client via UDP or broadcast to all clients on UDP port 4242.
+
 ### Attribution
 Uses Fldigi, the fast, light, digital modem: http://www.w1hkj.com/
 
