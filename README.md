@@ -39,8 +39,6 @@ No, but you're welcome to use this source code to build a solution that integrat
 ## To Do
 - Processing received traffic should probably be included in the async loop.  I'm just not terribly familiar with asyncio, so I haven't done that yet.
 
-- Implement "listen-before-transmit" to ensure a transmission doesn't start while receiving data.
-
 - Package as a module with a proper `setup.py` for automatic installation of dependencies.
 
 If you have an idea for improvement, please submit a pull request.
