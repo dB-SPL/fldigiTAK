@@ -10,7 +10,7 @@ The binary message is then encoded for transport using Base85 (RFC 1924) encodin
 
 The transmission starts with a header "::" to help locate the beginning of new data in the noise.
 
-If the packet was compressed with gzip, we insert the letter "g".  The length of the Base85 string in hexidecimal follows.  Most packets will not use gzip compression, so for those we just use the lenght.  Because "g" does not occur in hexidecimal notation, there is no need for a delimiter. Another ":" is inserted to mark the beginning of the payload.
+If the packet was compressed with gzip, we insert the letter "g".  The length of the Base85 string in hexidecimal follows.  Most packets will not use gzip compression, so for those we just use the lenght.  Because "g" does not occur in hexidecimal notation, there is no confusion. Another ":" is inserted to mark the beginning of the payload.
 
 The Base85 string comes next.  Because we know the length of the string, a trailing delimiter is not strictly needed, however to aid in debugging, we currently insert another ":"
 
