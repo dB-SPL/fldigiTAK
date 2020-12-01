@@ -1,5 +1,5 @@
 # fldigiTAK Encoding
-As of December, 2020 fldigiTAK is in active development and the encoding used is subject to change between versions.
+As of December, 2020, fldigiTAK is in active development and the encoding used is subject to change between versions.
 
 The current encoding is as follows:  
 Cursor-on-Target (CoT) messages are encoded using the TAK protobuf standard, however some information that is less relevant to clients without network connectivity has been omitted.  More information on the specific omissions is below.
