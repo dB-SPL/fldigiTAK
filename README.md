@@ -28,7 +28,7 @@ No. This script runs on a computer and communicates with TAK clients over the ne
 I'm aware of the Andflmsg application for Android, although I don't know if it has an API for communicating with other apps like Fldigi.  I'm not a mobile developer, but if you are, feel free to use this source code to build something that runs directly on the phone.
 
 **Can I use my faforite mode like PSK31 / MT63 / FT8?**  
-This script doesn't care whatever mode Fldigi uses, but be careful.  Most of the digital modes commonly used in amateur radio are _much_ too slow to keep up with the ammount of data ATAK and WinTAK generate, even after encoding and compressing it.  Use the fastest mode that works reliably with your radios.  I've had success with 8PSK1000 and 8PSK1200F.
+This script doesn't care what mode Fldigi uses, but be careful.  Most of the digital modes commonly used in amateur radio are _much_ too slow to keep up with the ammount of data ATAK and WinTAK generate, even after encoding and compressing it.  Use the fastest mode that works reliably with your radios.  I've had success with 8PSK1000 and 8PSK1200F.
 
 **How is this different from the HAMMER plugin for ATAK?**  
 As mentioned above, this script runs on a computer, not directly on the phone.  That means it works with any TAK clients that are within WiFi range as long as they are set up to send data to it.  Because it communicates over WiFi, this script will work with all versions of ATAK and WinTAK.  Unless you have a TAKmaps.com account, you have to build ATAK and HAMMER from source to use it.  **Finally, this actually works.**  Because of the encoding, transmissions are 2-3 times faster than with HAMMER, and data is sent automatically, not manually.
