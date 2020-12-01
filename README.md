@@ -43,7 +43,7 @@ No, but you're welcome to use this source code to build a solution that integrat
 
 - Package as a module with a proper `setup.py` for automatic installation of dependencies.
 
-If you have an idea for improvement, feel free to submit a pull request.
+If you have an idea for improvement, please submit a pull request.
 
 ### Attribution
 Uses Fldigi, the fast, light, digital modem: http://www.w1hkj.com/
