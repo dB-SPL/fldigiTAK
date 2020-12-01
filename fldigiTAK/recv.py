@@ -27,15 +27,17 @@ def recv(obj):
 				length = int(length[1:], 16)
 				print("length is " + str(length))
 				b64 = data[:length].decode()
-				print("Base64 string is " + b64)
-				recvd.append(gzip.decompress(base64.b85decode(b64)))
+				print("Base85 string is " + b64)
+				proto = b'\xbf\x01\xbf' + bytes(gzip.decompress(base64.b85decode(b64)))
+				recvd.append(proto)
 
 			else:
 				length = int(length, 16)
 				print("length is " + str(length))
 				b64 = data[:length].decode()
-				print("Base64 string is " + b64)
-				recvd.append(base64.b85decode(b64))
+				print("Base85 string is " + b64)
+				proto =  b'\xbf\x01\xbf' + bytes(base64.b85decode(b64))
+				recvd.append(proto)
 				
 	return recvd
 
