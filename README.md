@@ -1,9 +1,9 @@
 # fldigiTAK
-**A Python script to send and receive Cursor-on-Target (CoT) messages over VHF/UHF radio using Fldigi as a TNC**
+**A Python script to send and receive Cursor-on-Target (CoT) messages between Team Awareness Kit (TAK) clients over VHF/UHF radio using Fldigi as a TNC**
 
 This is still very much a work in progress, and it may never be completely practical.
 
-To support more than just a couple users, you should use a high-throughput mode like 8PSK1000 (3kbps) or 8PSK1200F (2.4kbps with forward error correction).  These modes should work over VHF/UHF radios without a "9600 baud" port using a simple sound card audio interface.  While it's possible to use use VOX with Fldigi's standard "long-preamble" setting for PSK modes, much better throughput is achieved using the "short-pramble", however this usually requires PTT control of the radio.
+To support more than just a couple users, you should use a high-throughput mode like 8PSK1000 (3kbps) or 8PSK1200F (2.4kbps with forward error correction).  These modes should work over VHF/UHF radios without a "9600 baud" port using a simple sound card audio interface.  While it's possible to use VOX with Fldigi's standard "long-preamble" setting for PSK modes, much better throughput is achieved using the "short-pramble", however this usually requires PTT control of the radio.
 
 Follow your local regulations.  As I interpret current US FCC rules, use of this script should comply with Part 95 rules when used with a type-accepted MURS radio or Part 97 rules when used on amatuer radio frequencies with proper station ID.  It seems to me, the transmissions would be too long and/or too frequent to comply with Part 95 rules for FRS radios.
 
