@@ -20,6 +20,11 @@ callsign = ""
 host = ''
 port = 6666
 
+# This is the listen-before-transmit threshold.  Before transmitting, we'll check the fldigi's SNR reading.  If your SNR higher than this number, that means
+# you're currently receiving valid data, and we'll delay the transmission for up to 30 seconds until the frequency is clear.
+# You may need to adjust this number for your particular radio / mode / interface combination.
+lbt = 29
+
 # If you entered a callsign above, we'll format it here for inclusion in your messages.
 if callsign != "":
     callsign = "de " + callsign
@@ -72,8 +77,8 @@ def recvfrom(loop, sock, n_bytes, fut=None, registed=False):
 
         for i in range(30):
             trx = m.main.get_trx_state()
-            sleep(1)
-            if trx != "RX":
+            snr = int(m.main.status1[4:-3])
+            if trx != "RX" or snr > lbt:
                 print("Fldigi is busy.  Sleeping.")
                 sleep(1)
             else:
