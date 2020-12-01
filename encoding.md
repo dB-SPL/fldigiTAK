@@ -30,7 +30,7 @@ Header Length            Payload           End   Receive Command
 ```
 
 ### What's actually encoded in the payload?
-fldigiTAK's transmissions are based on the Protocol Buffers (protobuf) binary encoding used in the the TAK protocol.  Protobuf is a very efficient way of encoding data.  You can think of it like compression for structured data sets.  After encoding, you get a binary file.  If you try to read it, you'll see some plain text strings, but most of the information isn't human-readable.
+fldigiTAK's transmissions are based on the Protocol Buffers (protobuf) binary encoding used in the the TAK protocol.  Protobuf is a very efficient way of encoding data.  You can think of it like compression for structured data sets.  For a CoT XML message that was 688 bytes long, the encoded protobuf message is only 292 bytes long, but it still contains all of the data.  After encoding, you get a binary file.  If you try to read it, you'll see some plain text strings, but most of the information isn't human-readable.
 
 Software can read it, though, and help us visualize the data.  Let's start by looking at all of the possible data that can be in a TAK protobuf.  I've simplified the types of data into just <text> and <number> to make it easier to undrstand what each field contains without having to understand the specific types of text and numbers computers use.
 ```
@@ -54,13 +54,13 @@ cotEvent {
   hae = <number>
   ce = <number>
   le = <number>
-  Detail {
+  detail {
     xmlDetail = <text> # If there is any data that doesn't fit into any of the other data structures, you put the plain XML here.
-    Contact {
+    contact {
       endpoint = <text>
       callsign = <text>
     }
-    Group {
+    group {
       name = <text>
       role = <text>
     }
@@ -84,4 +84,9 @@ cotEvent {
   }  
 }
 ```
-Wow! That's a lot of data to try to stuff into every transmission.
+Wow! That's a lot of data to try to stuff into every transmission.  Luckily, not every field is used in every CoT message.
+
+In fact, if our client can only communicate by radio, some of these fields aren't very useful at all.  For example, the "endpoint" field contains the IP address and port number client that sent the message is listening on.  If another client receives this message by radio, they can't use the IP address to contact the sender, so we remove that data before transmitting.  In the "cotEvent" section, we remove the "how" field that describes how our location was aquired.
+
+To make our transmission as short as possible, we also remove the "precisionLocation", "status", "takv", and "track" sections completely.  In the "cotEvent" section, we remove the "how" field. That information is nice to have, but not absolutely necessary.
+
