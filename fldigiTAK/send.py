@@ -6,7 +6,7 @@ import gzip
 from time import sleep
 from takprotobuf import xmlToProto
 from takprotobuf import parseProto
-from .recv import recv
+# from .recv import recv
 
 # Required for asyncio compatibility on Windows
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
