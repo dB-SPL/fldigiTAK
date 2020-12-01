@@ -7,6 +7,7 @@ from time import sleep
 from takprotobuf import xmlToProto
 from takprotobuf import parseProto
 
+# Required for asyncio compatibility on Windows
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 # If you'll be transmitting on amateur radio frequencies, or if you need to identify your transmissions with an unencoded callsign, enter it here,
@@ -15,10 +16,12 @@ asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 # users aren't required to identify trasmissions at all.
 # Keep in mind, data received from other users may be considered "third party messages" by your local regulators.  Makes sure you follow all local guidelines.
 callsign = ""
+host = ''
+port = 6666
 
 # If you entered a callsign above, we'll format it here for inclusion in your messages.
 if callsign != "":
-    callsign = " de " + callsign
+    callsign = "de " + callsign
 
 m = pyfldigi.Client()
 
@@ -27,9 +30,6 @@ loop = asyncio.get_event_loop()
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 sock.setblocking(False)
-
-host = ''
-port = 6666
 
 sock.bind((host, port))
 
@@ -63,7 +63,7 @@ def recvfrom(loop, sock, n_bytes, fut=None, registed=False):
             b64 = base64.b85encode(protobuf).decode()
             length = hex(len(b64))[2:]
 			
-        print("Base64 = " + b64)
+        print("Base85 = " + b64)
         send = "::" + length + ":" + b64 + ":" + callsign + "^r"
 		
         # Print received data
