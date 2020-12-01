@@ -19,7 +19,7 @@ First, edit `send.py` for the UDP port and network interface you want to listen 
 
 Launch Fldigi, then run `send.py` to send traffic from the clients over the radio.
 
-The `recv()` function in `recv.py` will return a list containing any CoT traffic Fldigi has received.  The messages are encoded as TAK protobufs, and can be sent directly to a client via UDP or broadcast to all clients on UDP port 4242.
+Receiving data is not currently automated.  Manually calling the `recv()` function in `recv.py` will return a list containing any CoT traffic Fldigi has received.  The messages are encoded as TAK protobufs and can be sent directly to clients via UDP unicast, multicast, or broadcast.  When receving is automated, the default will probably be to send a broadcast to all clients on port 4242.
 
 ## To Do
 - Depending on the use case, processing received traffic should probably be included in the async loop.  I'm just not terribly familiar with asyncio, so I haven't done that yet.
