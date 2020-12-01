@@ -10,7 +10,7 @@ Follow your local regulations.  As I interpret current US FCC rules, this should
 ## Requirements
 Requires TAK clients (tested with ATAK and WinTAK) be configured to send XML CoT messages to the computer running the script on the UDP port specified in `send.py`.
 
-Requires Fldigi be installed, properly configured, and running prior to launching the script.
+Requires Fldigi to be installed, properly configured, and running prior to launching the script.
 
 My takprotobuf library and the Untangle module for parsing XML are required in addition to the pyfldigi module for controlling Fldigi.
 
@@ -20,6 +20,18 @@ First, edit `send.py` for the UDP port and network interface you want to listen 
 Launch Fldigi, then run `send.py` to send traffic from the clients over the radio.
 
 Receiving data is not currently automated.  Manually calling the `recv()` function in `recv.py` will return a list containing any CoT traffic Fldigi has received.  The messages are encoded as TAK protobufs and can be sent directly to clients via UDP unicast, multicast, or broadcast.  When receving is automated, the default will probably be to send a broadcast to all clients on port 4242.
+
+## Frequently Asked Questions
+**Can I run this on my phone and plug a radio in directly?**  
+No. This script runs on a computer and communicates with TAK clients over the network.  It works well using a Raspberry Pi 4 as a WiFi hotspot.  I haven't tried it with other versions of the Pi.  If you get it working, let me know!
+
+I'm aware of the Andflmsg application for Android, although I don't know if it has an API for communicating with other apps like Fldigi.  I'm not a mobile developer, but if you are, feel free to use this source code to build something that runs directly on the phone.
+
+**How is this different from the HAMMER plugin for ATAK?**  
+As mentioned above, this script runs on a computer, not directly on the phone.  That means it works with any TAK clients that are within WiFi range as long as they are set up to send data to it.  Because it communicates over WiFi, this script will work with all versions of ATAK and WinTAK.  Unless you have a TAKmaps.com account, you have to build ATAK and HAMMER from source to use it.  **Finally, this actually works.**  Because of the encoding, transmissions are 2-3 times faster than with HAMMER, and data is sent automatically, not manually.
+
+**Does this integrate with APRS / DMR / D-STAR?**  
+No, but you're welcome to use this source code to build a solution that integrates with whatever system you wish.
 
 ## To Do
 - Depending on the use case, processing received traffic should probably be included in the async loop.  I'm just not terribly familiar with asyncio, so I haven't done that yet.
