@@ -3,7 +3,7 @@ A Python script to send and receive Cursor-on-Target (CoT) messages using Fldigi
 
 This is still very much a work in progress, and it may never be completely practical.
 
-To support more than just a couple users, you should use a high-throughput mode like 8PSK1000 (3kbps) or 8PSK1200F (2.4kbps with error correction).  These modes should work over a VHF/UHF radios without a "9600 baud" port using a simple sound card audio interface.  While it's possible to use use VOX with Fldigi's standard "long-preamble" setting for PSK modes, much better throughput is achieved using the "short-pramble", however this usually requires PTT control of the radio.
+To support more than just a couple users, you should use a high-throughput mode like 8PSK1000 (3kbps) or 8PSK1200F (2.4kbps with forward error correction).  These modes should work over a VHF/UHF radios without a "9600 baud" port using a simple sound card audio interface.  While it's possible to use use VOX with Fldigi's standard "long-preamble" setting for PSK modes, much better throughput is achieved using the "short-pramble", however this usually requires PTT control of the radio.
 
 ## Requirements
 Requires TAK clients (tested with ATAK and WinTAK) be configured to send XML CoT messages to the computer running the script on the UDP port specified in `send.py`.
