@@ -8,7 +8,7 @@ To support more than just a couple users, you should use a high-throughput mode 
 Follow your local regulations.  As I interpret current US FCC rules, use of this script should comply with Part 95 rules when used with a type-accepted MURS radio or Part 97 rules when used on amatuer radio frequencies with proper station ID.  It seems to me, the transmissions would be too long and/or too frequent to comply with Part 95 rules for FRS radios.
 
 ## Requirements
-Requires TAK clients (tested with ATAK and WinTAK) be configured to send XML CoT messages to the computer running the script on the UDP port specified in `send.py`.  I may also add the ability to listen for multicast protobuf messags, but that's not currently implemented.
+Requires TAK clients (tested with ATAK-CIV and WinTAK-CIV) be configured to send XML CoT messages to the computer running the script on the UDP port specified in `send.py`.  I may also add the ability to listen for multicast protobuf messags, but that's not currently implemented.
 
 Requires Fldigi to be installed, properly configured, and running prior to launching the script.
 
