@@ -23,7 +23,7 @@ Let's consider this transmission created by the script, and ready to send to Fld
 ```
 ::c8:5}g4G3t=s0Ek`X?Eki9yDlStkF)cMMGBGVPF*YzXH8nRlI4v<bG%+(aIWjjhEi*YeGB7wbGd4LbF)%POFy5BhhvF_c-j>>j;x0he;NFMgE>WkP=jl1NKtNfY+($Gnid4X10002s&k|!nX#fBK0000OKyd&70N~FOV?lZx5(W|kWI`=A8WIWvQe|Wk3shxcZ6Hl$ZDM6|:^r
 ```
-We see the header followed by the length, and a ":" delimiter.  There's no "g", so we know the packet doesn't use gzip compression.  The lenght in hexadecimal is "c8", so the Base85 string is "200" characters long.  We see the ":" trailing delimiter at the end.  There is no callsign to identify this transmission.  Because we're sending this _to_ Fldigi, we also see "^r" command.  This won't be transmitted, and you won't see it in your received data.
+We see the header followed by the length, and a ":" delimiter.  There's no "g", so we know the packet doesn't use gzip compression.  The length in hexadecimal is "c8", so the Base85 string is 200 characters long.  We see the ":" trailing delimiter at the end.  There is no callsign to identify this transmission.  Because we're sending this _to_ Fldigi, we also see "^r" command.  This won't be transmitted, and you won't see it in your received data.
 ```
 Header Length            Payload           End   Receive Command
   ::    c8:   5}g4G3t=s0Ek ... cZ6Hl$ZDM6|  :         ^r
