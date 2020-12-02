@@ -15,6 +15,8 @@ Requires Fldigi to be installed, properly configured, and running prior to launc
 My takprotobuf library and the Untangle module for parsing XML are required in addition to the pyfldigi module for controlling Fldigi.
 
 ## Usage
+This project is in its infancy, so some things, including installation, still have to be done manually.  As the project matures, more features will be automated.
+
 First, edit `send.py` for the UDP port and network interface you want to listen on.  The default is to listen on UDP port 6666 on all network interfaces.  If you're required to identify your transmissions in an unencoded form, enter your callsign as well.
 
 Launch Fldigi, then run `send.py` to send traffic from the clients over the radio.
