@@ -30,9 +30,11 @@ Header Length            Payload           End   Receive Command
 ```
 
 ### What's actually encoded in the payload?
-fldigiTAK's transmissions are based on the Protocol Buffers (protobuf) binary encoding used in the the TAK protocol.  Protobuf is a very efficient way of encoding data.  You can think of it like compression for structured data sets.  For a CoT XML message that was 688 bytes long, the encoded protobuf message is only 292 bytes long, but it still contains all of the data.  After encoding, you get a binary file.  If you try to read it, you'll see some plain text strings, but most of the information isn't human-readable.
+fldigiTAK's transmissions are based on the Protocol Buffers (protobuf) binary encoding used in the the TAK protocol.  Protobuf is a very efficient way of encoding data.  You can think of it like compression for structured data sets.  For a CoT XML message that was 688 bytes long, the encoded protobuf message is only 292 bytes long, but it still contains all of the data.  After encoding, you get a binary file.  If you try to read it, you'll see some plain text strings, but most of the information isn't human-readable.  We'll further reduce the size of the packet to only 160 bytes by removing all but the most necessary data.
 
-Software can read it, though, and help us visualize the data.  Let's start by looking at all of the possible data that can be in a TAK protobuf.  I've simplified the types of data into just "text" and "number" to make it easier to understand what each field contains without having to understand the specific types of text and numbers computers use.
+We can't reliably send binary files over the radio, so we have to encode it as text characters first.  We use Base85 encoding, which is compatible with the character set in most high speed digital text modes.  All binary-to-text encoding systems introduce some overhead, and while Base85 is one of the most efficient, its 80% efficiency means our 160 byte binary payload will grow to 200 characters when we send it as text.
+
+I mentioned that protobufs are encoded, and most of the data isn't human-readable.  Software can read it, though, and help us visualize the data.  Let's start by looking at all of the possible data that can be in a TAK protobuf.  I've simplified the types of data into just "text" and "number" to make it easier to understand what each field contains without having to understand the specific types of text and numbers computers use.
 ```
 takControl {
   minProtoVersion = <number>
